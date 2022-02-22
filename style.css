@@ -29,18 +29,6 @@ option{
     font-family: cursive;
     font-size: 1em;
 }
-form #submit{
-    padding: 0.2em;
-    font-family: cursive;
-    font-size: 0.8em;
-    font-weight: bold;
-    background-color: #aac9ff;
-    border: 2px solid black;
-    border-radius: 5px;
-}
-form #submit:hover{
-    background-color: cornflowerblue;
-}
 
 div.outer{
     display: flex;

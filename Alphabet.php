@@ -3,22 +3,36 @@ $list = [];
 $heading = "";
 
 if (!empty($_GET["list-option"])) {
-    if ($_GET["list-option"] == "numbers1-30") {
-        $list = range(1, 30);
-        $heading = "Numbers by 1";
-    } elseif ($_GET["list-option"] == "numbers10-300") {
-        $list = range(10, 300, 10);
-        $heading = "Numbers by 10's";
-    }elseif ($_GET["list-option"] == "reverseAlpha") {
-        $list = range("Z", "A");
-        $heading = "Reverse Alphabet";
-    } elseif ($_GET["list-option"] == "lowerCase") {
-        $list = range("a", "z");
-        $heading = "Lower Case";
-    }
-    else {
-        $list = range("A", "Z");
-        $heading = "Alphabet";
+    switch ($_GET["list-option"]) {
+        case "numbers1-30": {
+                $list = range(1, 30);
+                $heading = "Numbers 1 - 30";
+                break;
+            }
+        case "reverseNumbers": {
+                $list = range(30, 1);
+                $heading = "Reverse Numbers 30 - 1";
+                break;
+            }
+        case "numbers10-300": {
+                $list = range(10, 300, 10);
+                $heading = "Numbers by 10's";
+                break;
+            }
+        case "reverseAlpha": {
+                $list = range("Z", "A");
+                $heading = "Reverse Alphabet";
+                break;
+            }
+        case "lowerCase": {
+                $list = range("a", "z");
+                $heading = "Lower Case";
+                break;
+            }
+        default: {
+                $list = range("A", "Z");
+                $heading = "Alphabet";
+            }
     }
 } else {
     $list = range("A", "Z");
@@ -107,14 +121,14 @@ CDATA;
         <h1><?= $heading ?></h1>
         <form method="get">
             <label for="order-list">Choose something:</label>
-            <select name="list-option" id="order-list">
+            <select name="list-option" id="order-list" onchange="this.form.submit()">
                 <option value="alpha">Alphabet</option>
                 <option value="lowerCase">Lower Case a - b</option>
                 <option value="reverseAlpha">Reverse Alphabet</option>
                 <option value="numbers1-30">Numbers 1 - 30</option>
+                <option value="reverseNumbers">Reverse Numbers</option>
                 <option value="numbers10-300">Numbers 10 - 300</option>
             </select>
-            <button id="submit" type="submit">Select Option</button>
         </form>
     </header>
 
