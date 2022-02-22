@@ -9,7 +9,14 @@ if (!empty($_GET["list-option"])) {
     } elseif ($_GET["list-option"] == "numbers10-300") {
         $list = range(10, 300, 10);
         $heading = "Numbers by 10's";
-    } else {
+    }elseif ($_GET["list-option"] == "reverseAlpha") {
+        $list = range("Z", "A");
+        $heading = "Reverse Alphabet";
+    } elseif ($_GET["list-option"] == "lowerCase") {
+        $list = range("a", "z");
+        $heading = "Lower Case";
+    }
+    else {
         $list = range("A", "Z");
         $heading = "Alphabet";
     }
@@ -102,6 +109,8 @@ CDATA;
             <label for="order-list">Choose something:</label>
             <select name="list-option" id="order-list">
                 <option value="alpha">Alphabet</option>
+                <option value="lowerCase">Lower Case a - b</option>
+                <option value="reverseAlpha">Reverse Alphabet</option>
                 <option value="numbers1-30">Numbers 1 - 30</option>
                 <option value="numbers10-300">Numbers 10 - 300</option>
             </select>
