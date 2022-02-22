@@ -7,9 +7,39 @@ body{
 header{
     display: flex;
     justify-content: center;
+    min-height: 7em;
 }
 header h1{
     font-weight: bold;
+}
+form{
+    position: absolute;
+    top: 0.5em;
+    right: 6em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3em;
+    font-size: 1.2em;
+}
+select{
+    font-family: cursive;
+    font-size: 0.8em;
+}
+option{
+    font-family: cursive;
+    font-size: 1em;
+}
+form #submit{
+    padding: 0.2em;
+    font-family: cursive;
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: #aac9ff;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+form #submit:hover{
+    background-color: cornflowerblue;
 }
 
 div.outer{
@@ -22,7 +52,7 @@ div.outer{
     border-radius: 10px;
     background-color: white;
 }
-.letter{
+.value{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,17 +63,17 @@ div.outer{
     border-radius: 5px;
     background-color: cornflowerblue;
 }
-div.result-letter{
+div.result-value{
     display: none;
     background-color: rgb(114, 221, 114);
 }
-span, button{
+span, button.choice-value{
     font-size: 1.3em;
     font-weight: bold;
     font-family: cursive;
     transition: 300ms;
 }
-button:hover{
+button.choice-value:hover{
     border-radius: 35px;
 }
 h2{

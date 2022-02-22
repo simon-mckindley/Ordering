@@ -1,14 +1,32 @@
 <?php
-$alphabet = range("A", "Z");
-$shuffledArr = $alphabet;
+$list = [];
+$heading = "";
+
+if (!empty($_GET["list-option"])) {
+    if ($_GET["list-option"] == "numbers1-30") {
+        $list = range(1, 30);
+        $heading = "Numbers by 1";
+    } elseif ($_GET["list-option"] == "numbers10-300") {
+        $list = range(10, 300, 10);
+        $heading = "Numbers by 10's";
+    } else {
+        $list = range("A", "Z");
+        $heading = "Alphabet";
+    }
+} else {
+    $list = range("A", "Z");
+    $heading = "Alphabet";
+}
+
+$shuffledArr = $list;
 shuffle($shuffledArr);
 
 function displayResult()
 {
-    global $alphabet;
-    foreach ($alphabet as $letter) {
-        echo "\t<div id='result$letter' class='letter result-letter'>\n";
-        echo "\t\t<span>$letter</span>\n";
+    global $list;
+    foreach ($list as $value) {
+        echo "\t<div id='result$value' class='value result-value'>\n";
+        echo "\t\t<span>$value</span>\n";
         echo "\t</div>\n";
     }
 }
@@ -16,8 +34,8 @@ function displayResult()
 function displayShuffle()
 {
     global $shuffledArr;
-    foreach ($shuffledArr as $letter) {
-        echo "\t<button id='choice$letter' type='button' class='letter choice-letter' onclick='onChoice(\"$letter\")'>$letter</button>\n";
+    foreach ($shuffledArr as $value) {
+        echo "\t<button id='choice$value' type='button' class='value choice-value' onclick='onChoice(\"$value\")'>$value</button>\n";
     }
 }
 
@@ -43,33 +61,33 @@ CDATA;
     <meta name="author" content="Simon Mckindley">
     <meta name="description" content="A Bit of Fun">
     <meta http-equiv="X-Frame-Options" content="deny">
-    <title>Alphabet</title>
+    <title>Ordering</title>
     <link rel="icon" href='https://previews.123rf.com/images/conceptw/conceptw1702/conceptw170200026/72327976-abc-%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E3%83%99%E3%83%83%E3%83%88%E6%96%87%E5%AD%97-3-d-%E3%81%AE%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E8%89%B2.jpg?fj=1' type="image/x-icon">
     <link id='stylecss' type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>">
 
-    <?= php2js($alphabet, 'alphabetJS') ?>
+    <?= php2js($list, 'listJS') ?>
 
     <script>
         var index = 0;
-        var nextLetter = alphabetJS[index];
+        var nextValue = listJS[index];
         console.log("Index:", index);
-        console.log("NextLetter:", nextLetter);
+        console.log("NextValue:", nextValue);
 
         function onChoice(choice) {
             console.log("Choice:", choice);
-            let choice_els = document.getElementsByClassName("choice-letter");
+            let choice_els = document.getElementsByClassName("choice-value");
             for (let i = 0; i < choice_els.length; i++) {
                 choice_els[i].style.borderColor = "black";
             }
-            if (choice == nextLetter) {
+            if (choice == nextValue) {
                 if (index > 0) {
-                    document.getElementById("result" + alphabetJS[index - 1]).style.borderColor = "black";
+                    document.getElementById("result" + listJS[index - 1]).style.borderColor = "black";
                 }
                 document.getElementById("result" + choice).style.display = "flex";
                 document.getElementById("result" + choice).style.borderColor = "#0044bd";
                 document.getElementById("choice" + choice).style.display = "none";
                 index++;
-                nextLetter = alphabetJS[index];
+                nextValue = listJS[index];
             } else {
                 document.getElementById("choice" + choice).style.borderColor = "red";
             }
@@ -79,7 +97,16 @@ CDATA;
 
 <body>
     <header>
-        <h1>Alphabet</h1>
+        <h1><?= $heading ?></h1>
+        <form method="get">
+            <label for="order-list">Choose something:</label>
+            <select name="list-option" id="order-list">
+                <option value="alpha">Alphabet</option>
+                <option value="numbers1-30">Numbers 1 - 30</option>
+                <option value="numbers10-300">Numbers 10 - 300</option>
+            </select>
+            <button id="submit" type="submit">Select Option</button>
+        </form>
     </header>
 
     <div id="result" class="outer">
