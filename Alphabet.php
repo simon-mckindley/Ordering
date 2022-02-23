@@ -91,6 +91,7 @@ CDATA;
     <script>
         var index = 0;
         var nextValue = listJS[index];
+        var lastIndex = listJS.length - 1;
         console.log("Index:", index);
         console.log("NextValue:", nextValue);
 
@@ -107,8 +108,12 @@ CDATA;
                 document.getElementById("result" + choice).style.display = "flex";
                 document.getElementById("result" + choice).style.borderColor = "#0044bd";
                 document.getElementById("choice" + choice).style.display = "none";
-                index++;
-                nextValue = listJS[index];
+                if (index == lastIndex) {
+                    alert("Taske completed.\nWell done!!");
+                } else {
+                    index++;
+                    nextValue = listJS[index]; 
+                }
             } else {
                 document.getElementById("choice" + choice).style.borderColor = "red";
             }
