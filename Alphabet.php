@@ -26,17 +26,17 @@ if (!empty($_GET["list-option"])) {
             }
         case "lowerCase": {
                 $list = range("a", "z");
-                $heading = "Lower Case";
+                $heading = "Alphabet - Lower Case";
                 break;
             }
         default: {
                 $list = range("A", "Z");
-                $heading = "Alphabet";
+                $heading = "Alphabet - Upper Case";
             }
     }
 } else {
     $list = range("A", "Z");
-    $heading = "Alphabet";
+    $heading = "Welcome to Ordering";
 }
 
 $shuffledArr = $list;
@@ -127,8 +127,9 @@ CDATA;
         <form method="get">
             <label for="order-list">Choose something:</label>
             <select name="list-option" id="order-list" onchange="this.form.submit()">
-                <option value="alpha">Alphabet</option>
-                <option value="lowerCase">Lower Case a - b</option>
+                <option value="">--Choose an Option--</option>
+                <option value="alpha">Alphabet-Upper Case</option>
+                <option value="lowerCase">Alphabet-Lower Case</option>
                 <option value="reverseAlpha">Reverse Alphabet</option>
                 <option value="numbers1-30">Numbers 1 - 30</option>
                 <option value="reverseNumbers">Reverse Numbers</option>
