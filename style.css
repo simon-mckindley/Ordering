@@ -67,3 +67,12 @@ button.choice-value:hover{
 h2{
     margin: 0.2rem;
 }
+
+@media only screen and (max-width: 980px){
+    header{
+        min-height: 10em;
+    }
+    form{
+        top: 4em; 
+    }
+}
