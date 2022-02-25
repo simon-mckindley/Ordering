@@ -14,11 +14,6 @@ if (!empty($_GET["list-option"])) {
                 $heading = "Reverse Numbers 30 - 1";
                 break;
             }
-        case "numbers10-300": {
-                $list = range(10, 300, 10);
-                $heading = "Numbers by 10's";
-                break;
-            }
         case "reverseAlpha": {
                 $list = range("Z", "A");
                 $heading = "Reverse Alphabet";
@@ -29,11 +24,19 @@ if (!empty($_GET["list-option"])) {
                 $heading = "Alphabet - Lower Case";
                 break;
             }
+        case "custom": {
+                $heading = "Custom Numbers";
+                break;
+            }
         default: {
                 $list = range("A", "Z");
                 $heading = "Alphabet - Upper Case";
             }
     }
+} elseif (!empty($_GET["custom-option"])) {
+    $custom = $_GET["custom-option"];
+    $list = range($custom, ($custom * 30), $custom);
+    $heading = "Numbers by $custom";
 } else {
     $list = range("A", "Z");
     $heading = "Welcome to Ordering";
@@ -58,6 +61,23 @@ function displayShuffle()
     foreach ($shuffledArr as $value) {
         echo "\t<button id='choice$value' type='button' class='value choice-value' onclick='onChoice(\"$value\")'>$value</button>\n";
     }
+}
+
+function displayCustom()
+{
+    echo <<< "OUTPUT"
+    <form id="custom-form" method="get">
+        <select name="custom-option" id="custom-list" onchange="this.form.submit()">
+            <option value="">--Choose a Number--</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </form>
+OUTPUT;
 }
 
 function php2js($arr, $arrName)   /// General function for converting a PHP array to a JS version
@@ -112,7 +132,7 @@ CDATA;
                     alert("Task completed.\nWell done!!");
                 } else {
                     index++;
-                    nextValue = listJS[index]; 
+                    nextValue = listJS[index];
                 }
             } else {
                 document.getElementById("choice" + choice).style.borderColor = "red";
@@ -124,18 +144,25 @@ CDATA;
 <body>
     <header>
         <h1><?= $heading ?></h1>
-        <form method="get">
-            <label for="order-list">Choose something:</label>
-            <select name="list-option" id="order-list" onchange="this.form.submit()">
-                <option value="">--Choose an Option--</option>
-                <option value="alpha">Alphabet-Upper Case</option>
-                <option value="lowerCase">Alphabet-Lower Case</option>
-                <option value="reverseAlpha">Reverse Alphabet</option>
-                <option value="numbers1-30">Numbers 1 - 30</option>
-                <option value="reverseNumbers">Reverse Numbers</option>
-                <option value="numbers10-300">Numbers 10 - 300</option>
-            </select>
-        </form>
+        <div id="forms">
+            <form id="list-form" method="get">
+                <label for="order-list">Choose something:</label>
+                <select name="list-option" id="order-list" onchange="this.form.submit()">
+                    <option value="">--Choose an Option--</option>
+                    <option value="alpha">Alphabet-Upper Case</option>
+                    <option value="lowerCase">Alphabet-Lower Case</option>
+                    <option value="reverseAlpha">Reverse Alphabet</option>
+                    <option value="numbers1-30">Numbers 1 - 30</option>
+                    <option value="reverseNumbers">Reverse Numbers</option>
+                    <option value="custom">Custom Numbers</option>
+                </select>
+            </form>
+            <?php
+            if (!empty($_GET["list-option"] == "custom")) {
+                displayCustom();
+            }
+            ?>
+        </div>
     </header>
 
     <div id="result" class="outer">

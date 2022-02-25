@@ -12,7 +12,7 @@ header{
 header h1{
     font-weight: bold;
 }
-form{
+#forms{
     position: absolute;
     top: 0.5em;
     right: 6em;
@@ -20,6 +20,10 @@ form{
     flex-direction: column;
     row-gap: 0.3em;
     font-size: 1.2em;
+}
+form{
+    display: flex;
+    flex-direction: column;
 }
 select{
     font-family: cursive;
@@ -70,9 +74,9 @@ h2{
 
 @media only screen and (max-width: 980px){
     header{
-        min-height: 10em;
+        min-height: 11em;
     }
-    form{
+    #forms{
         top: 4em; 
     }
 }
