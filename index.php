@@ -119,11 +119,11 @@ CDATA;
             console.log("Choice:", choice);
             let choice_els = document.getElementsByClassName("choice-value");
             for (let i = 0; i < choice_els.length; i++) {
-                choice_els[i].style.borderColor = "black";
+                choice_els[i].style.borderColor = "transparent";
             }
             if (choice == nextValue) {
                 if (index > 0) {
-                    document.getElementById("result" + listJS[index - 1]).style.borderColor = "black";
+                    document.getElementById("result" + listJS[index - 1]).style.borderColor = "transparent";
                 }
                 document.getElementById("result" + choice).style.display = "flex";
                 document.getElementById("result" + choice).style.borderColor = "#0044bd";

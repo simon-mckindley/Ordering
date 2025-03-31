@@ -1,82 +1,110 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+body {
     margin: 0em 5em;
-    font-family: cursive;
-    background-color: rgb(208, 243, 255);
+    font-family: "Comic Neue", cursive;
+    font-weight: 300;
+    font-style: normal;
+    background-color: rgb(241, 255, 254);
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 7em;
 }
-header h1{
-    font-weight: bold;
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 5px black;
 }
-#forms{
+
+h2 {
+    margin-block: 2rem 0.5rem;
+}
+
+#forms {
     position: absolute;
-    top: 0.5em;
-    right: 6em;
+    top: 1.5em;
+    right: 8vw;
     display: flex;
     flex-direction: column;
     row-gap: 0.3em;
     font-size: 1.2em;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
 }
-select{
+
+select {
     font-family: cursive;
-    font-size: 0.8em;
-}
-option{
-    font-family: cursive;
-    font-size: 1em;
+    font-size: 1rem;
+    padding: 0.125rem 0.5rem;
+    margin-block-start: 0.25rem;
+    border-radius: 5px;
 }
 
-div.outer{
+option {
+    font-family: cursive;
+    font-size: 1rem;
+}
+
+.outer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-items: center;
-    min-height: 5.5em;
-    border: 3px solid black;
-    border-radius: 10px;
+    min-height: 5.5rem;
+    border-radius: 5px;
     background-color: white;
+    box-shadow: 1px 1px 5px black;
 }
-.value{
+
+.value {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 3em;
-    width: 3em;
-    margin: 1em;
-    border: 3px solid black;
+    height: 4rem;
+    width: 4rem;
+    margin: 1rem;
+    border-color: transparent;
+    border-width: 4px;
     border-radius: 5px;
-    background-color: cornflowerblue;
+    background-color: rgb(180, 206, 255);
+    box-shadow: 1px 1px 5px black;
+    cursor: pointer;
 }
-div.result-value{
+
+.result-value {
     display: none;
     background-color: rgb(114, 221, 114);
 }
-span, button.choice-value{
-    font-size: 1.3em;
-    font-weight: bold;
-    font-family: cursive;
+
+span, button.choice-value {
+    font-family: inherit;
+    font-size: 1.5rem;
+    font-weight: 800;
     transition: 300ms;
 }
-button.choice-value:hover{
-    border-radius: 35px;
-}
-h2{
-    margin: 0.2rem;
+
+button.choice-value:hover {
+    box-shadow: 1px 1px 10px black;
 }
 
-@media only screen and (max-width: 980px){
-    header{
+
+@media only screen and (max-width: 980px) {
+    header {
         min-height: 11em;
     }
-    #forms{
-        top: 4em; 
+
+    #forms {
+        top: 4em;
     }
 }
