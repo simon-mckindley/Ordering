@@ -16,12 +16,14 @@ header {
 }
 
 h1 {
+    opacity: 0;
     font-size: 2.5rem;
     font-weight: 700;
     padding: 1rem 2rem;
     border-radius: 10px;
     background-color: white;
     box-shadow: 1px 1px 5px black;
+    animation: fadeIn 1000ms ease forwards;
 }
 
 h2 {
@@ -61,13 +63,14 @@ option {
     flex-wrap: wrap;
     align-items: center;
     justify-items: center;
-    min-height: 5.5rem;
+    min-height: 6rem;
     border-radius: 5px;
     background-color: white;
     box-shadow: 1px 1px 5px black;
 }
 
 .value {
+    opacity: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,6 +83,7 @@ option {
     background-color: rgb(180, 206, 255);
     box-shadow: 1px 1px 5px black;
     cursor: pointer;
+    animation: fadeIn 300ms ease forwards;
 }
 
 .result-value {
@@ -96,6 +100,17 @@ span, button.choice-value {
 
 button.choice-value:hover {
     box-shadow: 1px 1px 10px black;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
